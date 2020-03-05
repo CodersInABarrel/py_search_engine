@@ -2,13 +2,12 @@ from tkinter import *
 import tkinter
 import webbrowser
 from links import *
-from funcs import *
 from pygame import mixer  # Load the popular external library
 import time
+contents = ''
+
 mixer.init()
 mixer.music.load('yo.mp3')
-
-
 
 color = 'white'
 top = tkinter.Tk()
@@ -19,6 +18,10 @@ def getsquery():
     if squery.get().startswith('www.'):
         http = 'http://'
     webbrowser.open(http + squery.get())# need http://
+    f= open("search.txt","a")
+    f.write( squery.get() + '\n')
+    f.close()
+    
     sbar.delete(first=0,last=1000)
 
 def engchange():
